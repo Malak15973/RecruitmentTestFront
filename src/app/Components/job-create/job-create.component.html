@@ -1,0 +1,54 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Create Job</h2>
+  <form>
+    <div class="mb-3">
+      <label for="jobName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="jobName" placeholder="Enter job name" [(ngModel)]="jobData.name" required>
+    </div>
+    <div class="mb-3">
+      <label for="jobDescription" class="form-label">Description</label>
+      <textarea class="form-control" id="jobDescription" [(ngModel)]="jobData.description" rows="3" placeholder="Enter job description"
+        required></textarea>
+    </div>
+    <div class="row mb-3">
+      <div class="col">
+        <label for="validFrom" class="form-label">Valid From</label>
+        <input type="date" [(ngModel)]="jobData.validFrom" class="form-control" id="validFrom" required>
+      </div>
+      <div class="col">
+        <label for="validTo" class="form-label">Valid To</label>
+        <input type="date" [(ngModel)]="jobData.validTo" class="form-control" id="validTo" required>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="maxApplicants" class="form-label">Maximum Applicants</label>
+      <input type="number" [(ngModel)]="jobData.maxApplicants" class="form-control" id="maxApplicants" required>
+    </div>
+    <div class="mb-3">
+      <label for="jobCategory" class="form-label">Job Category</label>
+      <select class="form-select" id="jobCategory" required>
+        <option *ngFor="let item of categoryList" [(ngModel)]="jobData.categoryId"[value]="item.id">{{item.name}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="jobSkills" class="form-label">Job Skills</label>
+      <div *ngFor="let item of jobSkillsList"  class="form-check">
+        <input class="form-check-input" type="checkbox" [value]="item.id" [(ngModel)]="jobData.jobSkills" id="skill1">
+        <label class="form-check-label" for="skill1">
+          {{item.name}}
+        </label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="jobResponsibilities" class="form-label">Job Responsibilities</label>
+      
+      <div *ngFor="let item of jobResponsabilitiesList" class="form-check">
+        <input class="form-check-input" type="checkbox" [value]="item.id"[(ngModel)]="jobData.jobResponsabilities" id="responsibility3">
+        <label class="form-check-label" for="responsibility3">
+          {{item.name}}
+        </label>
+      </div>
+    </div>
+    <button (click)="addJobFunc()" type="submit" class="btn btn-primary">Create</button>
+  </form>
+</div>
